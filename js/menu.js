@@ -148,33 +148,28 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCartDisplay();
 });
 
-// 初始化分類功能
+// 等待 DOM 完全加載
 document.addEventListener('DOMContentLoaded', function() {
-    // 獲取所有分類按鈕和菜單項目
-    const categoryButtons = document.querySelectorAll('.category-btn');
+    // 分類篩選功能
+    const categoryButtons = document.querySelectorAll('.nav-item');
     const menuItems = document.querySelectorAll('.menu-item');
 
-    // 為每個分類按鈕添加點擊事件
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // 移除所有按鈕的 active 類別
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            // 為當前點擊的按鈕添加 active 類別
+            const category = this.getAttribute('data-category');
+
+            // 更新導覽列狀態
+            categoryButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
             this.classList.add('active');
 
-            // 獲取選擇的分類
-            const selectedCategory = this.dataset.category;
-
-            // 顯示/隱藏相應的菜單項目
+            // 篩選菜品
             menuItems.forEach(item => {
-                if (selectedCategory === 'all') {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
                     item.style.display = 'block';
                 } else {
-                    if (item.dataset.category === selectedCategory) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
+                    item.style.display = 'none';
                 }
             });
         });
