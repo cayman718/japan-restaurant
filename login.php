@@ -17,32 +17,39 @@ if (isset($_SESSION['user_id'])) {
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    .img {
+        width: 100px;
+        height: 100px;
+        margin-left: 130px;
+    }
+    </style>
 </head>
 
 <body class="bg-light">
-    <?php include 'includes/nav.php'; ?>
 
-    <div class="container py-5">
+    <div class="container py-5 my-7" style="margin-top: 65px;">
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
                 <div class="card shadow-sm">
-                    <div class="card-body p-4">
+                    <div class="card-body p-5 style=">
+                        <img src=" ./img/login.gif" alt="" class="img">
                         <h2 class="card-title text-center mb-4">會員登入</h2>
 
                         <?php if (isset($_SESSION['error'])): ?>
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                <?php echo $_SESSION['error'];
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['error'];
                                 unset($_SESSION['error']); ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         <?php endif; ?>
 
                         <?php if (isset($_SESSION['success'])): ?>
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <?php echo $_SESSION['success'];
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <?php echo $_SESSION['success'];
                                 unset($_SESSION['success']); ?>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
                         <?php endif; ?>
 
                         <form method="POST" action="process/login_process.php">

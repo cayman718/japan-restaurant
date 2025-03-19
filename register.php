@@ -18,8 +18,8 @@ if (isset($_SESSION['user_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <style>
     .form-container {
-        max-width: 500px;
-        margin: 40px auto;
+        max-width: 470px;
+        margin: 10px auto;
         padding: 30px;
         border-radius: 15px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -47,24 +47,30 @@ if (isset($_SESSION['user_id'])) {
         border-radius: 30px;
         transition: all 0.3s;
     }
+
+    .img {
+        width: 100px;
+        height: 100px;
+        margin-left: 19px;
+    }
     </style>
 </head>
 
 <body class="bg-light">
-    <?php include 'includes/nav.php'; ?>
 
-    <div class="container">
+    <div class="container py-4 my-3" style="margin-top: 130px;">
         <div class="form-container bg-white">
             <!-- 表單標題 -->
             <div class="form-header">
-                <i class="bi bi-person-circle"></i>
+                <img src="./img/register.png" alt="" class="img">
                 <h2>會員註冊</h2>
                 <p class="text-muted">加入我們的會員計畫</p>
             </div>
 
-            <?php if(isset($_SESSION['error'])): ?>
+            <?php if (isset($_SESSION['error'])): ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                <?php echo $_SESSION['error'];
+                    unset($_SESSION['error']); ?>
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
             </div>
             <?php endif; ?>

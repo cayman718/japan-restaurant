@@ -116,7 +116,6 @@ try {
 </head>
 
 <body>
-    <?php include 'includes/nav.php'; ?>
 
     <div class="container py-5">
         <div class="profile-wrapper">

@@ -901,7 +901,6 @@ $categories = $pdo->query("SELECT * FROM menu_categories ORDER BY sort_order")->
 </head>
 
 <body>
-    <?php include 'includes/nav.php'; ?>
 
     <!-- JavaScript -->
     <!-- 先引入 jQuery (如果需要的話) -->
