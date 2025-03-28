@@ -1,9 +1,20 @@
 <?php
 session_start();
+
+// 檢查是否登入
+if (!isset($_SESSION['user_id'])) {
+    // 儲存當前URL到session
+    $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+    header('Location: login.php');
+    exit;
+}
+
 require_once 'config/database.php';
 
 // 獲取所有菜單分類
 $categories = $pdo->query("SELECT * FROM menu_categories ORDER BY sort_order")->fetchAll();
+
+$isLoggedIn = isset($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -471,7 +482,7 @@ $categories = $pdo->query("SELECT * FROM menu_categories ORDER BY sort_order")->
         background-color: var(--bg-light);
     }
 
-    /* 主視覚區域 */
+    /* 主視覺區域 */
     .menu-hero {
         height: 60vh;
         background-position: center;

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zh-TW">
 
@@ -10,707 +13,707 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Noto Serif TC', serif;
-            color: #2c3e50;
-        }
+    body {
+        font-family: 'Noto Serif TC', serif;
+        color: #2c3e50;
+    }
 
-        .hero-section {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://images.unsplash.com/photo-1428515613728-6b4607e44363') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-        }
+    .hero-section {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('https://images.unsplash.com/photo-1428515613728-6b4607e44363') no-repeat center center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+    }
 
-        .hero-content {
-            width: 100%;
-            padding: 2rem;
-        }
+    .hero-content {
+        width: 100%;
+        padding: 2rem;
+    }
 
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 300;
-            letter-spacing: 0.5em;
-            margin-bottom: 2rem;
-        }
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 300;
+        letter-spacing: 0.5em;
+        margin-bottom: 2rem;
+    }
 
-        .japanese {
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 400;
-        }
+    .japanese {
+        font-family: 'Noto Serif JP', serif;
+        font-weight: 400;
+    }
 
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 300;
-            letter-spacing: 0.3em;
-            margin-bottom: 1.5rem;
-        }
+    .hero-subtitle {
+        font-size: 1.8rem;
+        font-weight: 300;
+        letter-spacing: 0.3em;
+        margin-bottom: 1.5rem;
+    }
 
-        .sub-text {
-            font-size: 1rem;
-            letter-spacing: 0.2em;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-        }
+    .sub-text {
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        margin-bottom: 3rem;
+        opacity: 0.9;
+    }
 
-        .btn-outline-light {
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            padding: 1rem 3rem;
-            letter-spacing: 0.2em;
-            transition: all 0.3s ease;
-        }
+    .btn-outline-light {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 1rem 3rem;
+        letter-spacing: 0.2em;
+        transition: all 0.3s ease;
+    }
 
-        .btn-outline-light:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
+    .btn-outline-light:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
 
-        /* 動畫效果 */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
+    /* 動畫效果 */
+    @keyframes fadeInUp {
+        from {
             opacity: 0;
-            animation: fadeInUp 1s ease forwards;
+            transform: translateY(30px);
         }
 
-        .delay-1 {
-            animation-delay: 0.5s;
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    .delay-1 {
+        animation-delay: 0.5s;
+    }
+
+    .delay-2 {
+        animation-delay: 1s;
+    }
+
+    .delay-3 {
+        animation-delay: 1.5s;
+    }
+
+    /* 文字淡入效果 */
+    .text-fade {
+        opacity: 0.8;
+        font-weight: 300;
+    }
+
+    .section-title {
+        position: relative;
+        margin-bottom: 4rem;
+        padding-bottom: 1rem;
+    }
+
+    .section-title:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: #e67e22;
+    }
+
+    .feature-card {
+        padding: 3rem 2rem;
+        border: none;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 2rem;
+    }
+
+    .menu-section {
+        background: #f8f9fa;
+        padding: 6rem 0;
+    }
+
+    .menu-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+
+    .menu-item img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        transition: all 0.5s ease;
+    }
+
+    .menu-item:hover img {
+        transform: scale(1.1);
+    }
+
+    .menu-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        color: #fff;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item:hover .menu-overlay {
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    }
+
+    .badge {
+        padding: 0.5em 1em;
+        font-weight: 500;
+    }
+
+    .btn-outline-dark:hover {
+        background: #2c3e50;
+        border-color: #2c3e50;
+    }
+
+    .contact-section {
+        background: #2c3e50;
+        color: #fff;
+        padding: 6rem 0;
+    }
+
+    .contact-info {
+        padding: 2rem;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .scroll-down {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-size: 2rem;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
         }
 
-        .delay-2 {
-            animation-delay: 1s;
+        40% {
+            transform: translateY(-30px);
         }
 
-        .delay-3 {
-            animation-delay: 1.5s;
+        60% {
+            transform: translateY(-15px);
         }
+    }
 
-        /* 文字淡入效果 */
-        .text-fade {
-            opacity: 0.8;
-            font-weight: 300;
+    /* 導覽列樣式 */
+    .navbar {
+        padding: 1.5rem 0;
+        transition: all 0.3s ease;
+    }
+
+    /* 滾動時的背景 */
+    /* .navbar.scrolled {
+        background: rgba(0, 0, 0, 0.85) !important;
+        padding: 1rem 0;
+        backdrop-filter: blur(10px);
+    } */
+
+    /* Logo 樣式 */
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .japanese-logo {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .brand-divider {
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 300;
+    }
+
+    .brand-text {
+        font-size: 1.2rem;
+        letter-spacing: 0.1em;
+        font-weight: 300;
+    }
+
+    /* 選單項目樣式 */
+    .nav-link {
+        font-size: 0.95rem;
+        letter-spacing: 0.2em;
+        padding: 0.5rem 1.5rem !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+        color: #fff !important;
+    }
+
+    /* 手機版選單按鈕 */
+    .navbar-toggler {
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    /* 動態背景效果 */
+    @media (max-width: 991.98px) {
+        .navbar-collapse {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
         }
+    }
 
-        .section-title {
-            position: relative;
-            margin-bottom: 4rem;
-            padding-bottom: 1rem;
-        }
+    /* 通用日式風格 */
+    .jp-title-small {
+        display: block;
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.8rem;
+        font-weight: 200;
+        letter-spacing: 0.3em;
+        margin-bottom: 0.5rem;
+    }
 
-        .section-title:after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: #e67e22;
-        }
+    .en-title {
+        display: block;
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+        color: #666;
+        font-weight: 300;
+    }
 
-        .feature-card {
-            padding: 3rem 2rem;
-            border: none;
-            border-radius: 15px;
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
+    /* 特色區域 */
+    .feature-card {
+        position: relative;
+        margin-bottom: 2rem;
+    }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-        }
+    .feature-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+    }
 
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 2rem;
-        }
+    .feature-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
 
-        .menu-section {
-            background: #f8f9fa;
-            padding: 6rem 0;
-        }
+    .feature-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
 
-        .menu-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            cursor: pointer;
-        }
+    .feature-content {
+        position: relative;
+        padding: 2rem 0;
+        text-align: center;
+    }
 
-        .menu-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: all 0.5s ease;
-        }
+    .jp-text {
+        font-family: 'Noto Serif JP', serif;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+    }
 
-        .menu-item:hover img {
-            transform: scale(1.1);
-        }
+    /* 菜單預覽 */
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
 
-        .menu-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: #fff;
-            transition: all 0.3s ease;
-        }
+    .menu-item {
+        position: relative;
+    }
 
-        .menu-item:hover .menu-overlay {
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-        }
+    .menu-tag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-family: 'Noto Serif JP', serif;
+        border-radius: 50%;
+    }
 
-        .badge {
-            padding: 0.5em 1em;
-            font-weight: 500;
-        }
+    /* 聯絡資訊 */
+    .contact-section {
+        background: #f8f8f8;
+        padding: 6rem 0;
+    }
 
-        .btn-outline-dark:hover {
-            background: #2c3e50;
-            border-color: #2c3e50;
-        }
+    .contact-wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-        .contact-section {
-            background: #2c3e50;
-            color: #fff;
-            padding: 6rem 0;
-        }
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-top: 4rem;
+    }
 
-        .contact-info {
-            padding: 2rem;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-        }
+    .contact-item {
+        text-align: center;
+    }
 
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
+    .contact-icon {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
 
-        @keyframes bounce {
+    .hours-grid {
+        display: grid;
+        gap: 0.5rem;
+    }
 
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
+    .note {
+        color: #666;
+        font-size: 0.9rem;
+    }
 
-            40% {
-                transform: translateY(-30px);
-            }
-
-            60% {
-                transform: translateY(-15px);
-            }
-        }
-
-        /* 導覽列樣式 */
-        .navbar {
-            padding: 1.5rem 0;
-            transition: all 0.3s ease;
-        }
-
-        /* 滾動時的背景 */
-        .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.85) !important;
-            padding: 1rem 0;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Logo 樣式 */
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .japanese-logo {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 2rem;
-            font-weight: 500;
-        }
-
-        .brand-divider {
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 300;
-        }
-
-        .brand-text {
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-            font-weight: 300;
-        }
-
-        /* 選單項目樣式 */
-        .nav-link {
-            font-size: 0.95rem;
-            letter-spacing: 0.2em;
-            padding: 0.5rem 1.5rem !important;
-            color: rgba(255, 255, 255, 0.8) !important;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-        }
-
-        /* 手機版選單按鈕 */
-        .navbar-toggler {
-            padding: 0.5rem;
-        }
-
-        .navbar-toggler:focus {
-            box-shadow: none;
-        }
-
-        /* 動態背景效果 */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                background: rgba(0, 0, 0, 0.95);
-                padding: 1rem;
-                border-radius: 0.5rem;
-                margin-top: 1rem;
-            }
-        }
-
-        /* 通用日式風格 */
-        .jp-title-small {
-            display: block;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.8rem;
-            font-weight: 200;
-            letter-spacing: 0.3em;
-            margin-bottom: 0.5rem;
-        }
-
-        .en-title {
-            display: block;
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            color: #666;
-            font-weight: 300;
-        }
-
-        /* 特色區域 */
-        .feature-card {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .feature-image {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-        }
-
-        .feature-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .feature-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .feature-content {
-            position: relative;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .jp-text {
-            font-family: 'Noto Serif JP', serif;
-            font-weight: 300;
-            letter-spacing: 0.2em;
-        }
-
-        /* 菜單預覽 */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .menu-item {
-            position: relative;
-        }
-
-        .menu-tag {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            font-family: 'Noto Serif JP', serif;
-            border-radius: 50%;
-        }
-
-        /* 聯絡資訊 */
-        .contact-section {
-            background: #f8f8f8;
-            padding: 6rem 0;
-        }
-
-        .contact-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .contact-item {
-            text-align: center;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-
-        .hours-grid {
-            display: grid;
-            gap: 0.5rem;
-        }
-
-        .note {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        @media (hover: hover) {
-            .feature-card:hover .feature-image img {
-                transform: scale(1.05);
-            }
-
-            .feature-card:hover .feature-overlay {
-                background: rgba(0, 0, 0, 0.2);
-            }
-        }
-
-        /* 主廚推薦區域樣式 */
-        .chef-recommend {
-            background-color: #fafafa;
-            padding: 5rem 0;
-        }
-
-        .jp-title-small {
-            display: block;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 2rem;
-            font-weight: 200;
-            letter-spacing: 0.3em;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        .en-title {
-            display: block;
-            font-size: 1rem;
-            letter-spacing: 0.2em;
-            color: #666;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-
-        .brush-stroke {
-            max-width: 200px;
-            margin: 0 auto;
-            padding: 1rem 0;
-        }
-
-        .brush-svg {
-            width: 100%;
-            height: auto;
-        }
-
-        .brush-path {
-            stroke: #2c3e50;
-            stroke-width: 0.5;
-            opacity: 0.3;
-        }
-
-        .dish-card {
-            background: #fff;
-            border: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dish-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .dish-image {
-            position: relative;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-        }
-
-        .dish-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .dish-card:hover .dish-image img {
+    @media (hover: hover) {
+        .feature-card:hover .feature-image img {
             transform: scale(1.05);
         }
 
-        .season-tag {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 0.5rem;
-            text-align: center;
-            min-width: 3.5rem;
+        .feature-card:hover .feature-overlay {
+            background: rgba(0, 0, 0, 0.2);
         }
+    }
 
-        .season-tag .kanji {
-            display: block;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.2rem;
-            color: #2c3e50;
-            line-height: 1.2;
-        }
+    /* 主廚推薦區域樣式 */
+    .chef-recommend {
+        background-color: #fafafa;
+        padding: 5rem 0;
+    }
 
-        .season-tag .season {
-            display: block;
-            font-size: 0.7rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+    .jp-title-small {
+        display: block;
+        font-family: 'Noto Serif JP', serif;
+        font-size: 2rem;
+        font-weight: 200;
+        letter-spacing: 0.3em;
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+    }
+
+    .en-title {
+        display: block;
+        font-size: 1rem;
+        letter-spacing: 0.2em;
+        color: #666;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+
+    .brush-stroke {
+        max-width: 200px;
+        margin: 0 auto;
+        padding: 1rem 0;
+    }
+
+    .brush-svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .brush-path {
+        stroke: #2c3e50;
+        stroke-width: 0.5;
+        opacity: 0.3;
+    }
+
+    .dish-card {
+        background: #fff;
+        border: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dish-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .dish-image {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+    }
+
+    .dish-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+
+    .dish-card:hover .dish-image img {
+        transform: scale(1.05);
+    }
+
+    .season-tag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem;
+        text-align: center;
+        min-width: 3.5rem;
+    }
+
+    .season-tag .kanji {
+        display: block;
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.2rem;
+        color: #2c3e50;
+        line-height: 1.2;
+    }
+
+    .season-tag .season {
+        display: block;
+        font-size: 0.7rem;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .dish-info {
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .dish-name .jp-text {
+        display: block;
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        margin-bottom: 0.3rem;
+        color: #2c3e50;
+    }
+
+    .dish-name .en-text {
+        display: block;
+        font-size: 0.9rem;
+        color: #666;
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+    }
+
+    .dish-description {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .price {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.2rem;
+        color: #2c3e50;
+        font-weight: 400;
+    }
+
+    @media (max-width: 768px) {
+        .jp-title-small {
+            font-size: 1.6rem;
         }
 
         .dish-info {
-            padding: 2rem;
-            text-align: center;
+            padding: 1.5rem;
         }
 
         .dish-name .jp-text {
-            display: block;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 0.3rem;
-            color: #2c3e50;
-        }
-
-        .dish-name .en-text {
-            display: block;
-            font-size: 0.9rem;
-            color: #666;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        .dish-description {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.2rem;
-            color: #2c3e50;
-            font-weight: 400;
-        }
-
-        @media (max-width: 768px) {
-            .jp-title-small {
-                font-size: 1.6rem;
-            }
-
-            .dish-info {
-                padding: 1.5rem;
-            }
-
-            .dish-name .jp-text {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* 聯絡資訊區域樣式 */
-        .contact-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://images.unsplash.com/photo-1514933651103-005eec06c04b') no-repeat center center;
-            background-size: cover;
-            background-attachment: fixed;
-            color: #fff;
-        }
-
-        .contact-wrapper {
-            padding: 4rem 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-top: 4rem;
-        }
-
-        .contact-circle {
-            width: 4rem;
-            height: 4rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover .contact-circle {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .contact-circle i {
-            font-size: 1.5rem;
-            color: #fff;
-        }
-
-        .contact-text {
-            font-family: 'Noto Serif JP', serif;
-        }
-
-        .contact-text p {
             font-size: 1.1rem;
-            letter-spacing: 0.1em;
+        }
+    }
+
+    /* 聯絡資訊區域樣式 */
+    .contact-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url('https://images.unsplash.com/photo-1514933651103-005eec06c04b') no-repeat center center;
+        background-size: cover;
+        background-attachment: fixed;
+        color: #fff;
+    }
+
+    .contact-wrapper {
+        padding: 4rem 0;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-top: 4rem;
+    }
+
+    .contact-circle {
+        width: 4rem;
+        height: 4rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover .contact-circle {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+    }
+
+    .contact-circle i {
+        font-size: 1.5rem;
+        color: #fff;
+    }
+
+    .contact-text {
+        font-family: 'Noto Serif JP', serif;
+    }
+
+    .contact-text p {
+        font-size: 1.1rem;
+        letter-spacing: 0.1em;
+    }
+
+    .contact-text small {
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            gap: 2rem;
         }
 
-        .contact-text small {
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            opacity: 0.8;
+        .jp-title-small {
+            font-size: 1.5rem;
         }
+    }
 
-        @media (max-width: 768px) {
-            .contact-grid {
-                gap: 2rem;
-            }
+    .footer {
+        background-color: #f8f8f8;
+    }
 
-            .jp-title-small {
-                font-size: 1.5rem;
-            }
-        }
+    .footer-title .jp-title-small {
+        display: block;
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+    }
 
-        .footer {
-            background-color: #f8f8f8;
-        }
+    .footer-title .en-title {
+        display: block;
+        font-size: 0.9rem;
+        color: #666;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+    }
 
+    .footer-info {
+        padding: 2rem;
+        height: 100%;
+    }
+
+    .footer-info i {
+        font-size: 1.5rem;
+        color: #2c3e50;
+    }
+
+    .footer-info h5 {
+        font-family: 'Noto Serif JP', serif;
+        font-size: 1.1rem;
+        font-weight: 400;
+        color: #2c3e50;
+    }
+
+    .footer-info p {
+        margin-bottom: 0.5rem;
+        color: #2c3e50;
+    }
+
+    .footer-info small {
+        font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
         .footer-title .jp-title-small {
-            display: block;
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-title .en-title {
-            display: block;
-            font-size: 0.9rem;
-            color: #666;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
+            font-size: 1.5rem;
         }
 
         .footer-info {
-            padding: 2rem;
-            height: 100%;
+            padding: 1.5rem;
         }
-
-        .footer-info i {
-            font-size: 1.5rem;
-            color: #2c3e50;
-        }
-
-        .footer-info h5 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #2c3e50;
-        }
-
-        .footer-info p {
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-        }
-
-        .footer-info small {
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 768px) {
-            .footer-title .jp-title-small {
-                font-size: 1.5rem;
-            }
-
-            .footer-info {
-                padding: 1.5rem;
-            }
-        }
+    }
     </style>
 </head>
 
@@ -742,18 +745,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="reservation.php">預約體驗</a>
                     </li>
-                    <?php if (isset($_SESSION['user_id'])): ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="dashboard.php">會員專區</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="logout.php">登出</a>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.php">登入</a>
-                        </li>
-                    <?php endif; ?>
+                    <li class="nav-item">
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                        <a class="nav-link" href="logout.php">登出</a>
+                        <?php else: ?>
+                        <a class="nav-link" href="login.php">登入</a>
+                        <?php endif; ?>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -987,7 +985,7 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // 滾動時改變導覽列背景
         document.addEventListener('DOMContentLoaded', function() {
@@ -1001,7 +999,7 @@
                 }
             });
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

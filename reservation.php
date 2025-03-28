@@ -1,13 +1,21 @@
 <?php
 session_start();
+
+// 檢查是否登入
+if (!isset($_SESSION['user_id'])) {
+    // 儲存當前URL到session
+    $_SESSION['redirect_after_login'] = $_SERVER['REQUEST_URI'];
+    header('Location: login.php');
+    exit;
+}
 require_once 'config/database.php';
 require_once 'includes/auth.php';
-
 if (!isLoggedIn()) {
     $_SESSION['error'] = "請先登入才能進行訂位";
     header("Location: login.php");
     exit();
 }
+
 
 $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
 $stmt->execute([$_SESSION['user_id']]);
